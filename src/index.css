@@ -13,7 +13,7 @@ body {
 /*}*/
 
 .page {
-  @apply max-w-screen-lg mx-auto pt-24 px-3;
+  @apply max-w-screen-lg mx-auto pt-16 px-3;
 }
 
 .page-sm {
@@ -21,11 +21,11 @@ body {
 }
 
 .btn {
-  @apply py-2 px-5 rounded-full m-1 font-bold text-center text-sm disabled:opacity-30 transition;
+  @apply py-2 px-5 font-bold text-center text-sm disabled:opacity-30 transition;
 }
 
 .btn.primary {
-  @apply bg-white hover:bg-sky-200 text-black;
+  @apply bg-[#172842] text-white;
 }
 
 /*FORMS ERROR*/
