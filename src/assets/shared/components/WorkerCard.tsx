@@ -1,13 +1,25 @@
-const WorkerCard = () => {
+export interface WorkerCardProps {
+  name: string;
+  img: string;
+}
+
+const WorkerCard = (props: WorkerCardProps) => {
   return (
-    <div className="max-w-xs border border-fuchsia-500 ">
+    <div className="max-w-xs shadow-2xl border rounded-xl">
       <img
-        className="h-full w-full"
-        src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+        className="h-full w-full border rounded-t-xl"
+        src={props.img}
         alt=""
       />
-      <button type="button" className="btn primary w-full">
-        Luca Candelli <i className="fa fa-arrow-circle-right"></i>
+
+      <button
+        type="button"
+        className="btn primary w-full h-16 border rounded-b-xl"
+      >
+        {props.name}
+        <span className="ml-5">
+          <i className="fa fa-arrow-circle-right"></i>
+        </span>
       </button>
     </div>
   );
