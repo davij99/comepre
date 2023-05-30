@@ -13,11 +13,7 @@ body {
 /*}*/
 
 .page {
-<<<<<<< HEAD
   @apply max-w-screen-xl mx-auto pt-24 px-3;
-=======
-  @apply max-w-screen-xl mx-auto pt-16 px-3;
->>>>>>> test2
 }
 
 .page-sm {
