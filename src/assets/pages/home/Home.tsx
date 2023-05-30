@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Employee } from "../../../model/employee.ts";
-import luca from "../../image/LucaCandelli.png";
+import luca from "../../images/LucaCandelli.png"
 import WorkerCard from "../../shared/components/WorkerCard.tsx";
 import ServerError from "../../shared/components/core/ServerError.tsx";
 import { get } from "../../../services/employees/employees.api.ts";
