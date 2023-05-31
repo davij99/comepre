@@ -1,4 +1,4 @@
-import logo from "../../../../image/LogoComepre.png";
+import logo from "../../../../../../public/image/LogoComepre.png";
 import DateTime from "./components/DateTime.tsx";
 
 const NavBar = () => {

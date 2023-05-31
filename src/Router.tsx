@@ -13,7 +13,7 @@ export const Router: React.FC = () => {
       element: <Home></Home>,
     },
     {
-      path: "/project",
+      path: "/project/:id",
       element: <Project></Project>,
     },
     {
