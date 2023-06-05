@@ -1,49 +1,47 @@
-import { useEffect, useState } from "react";
-import { Employee } from "../../../model/employee.ts";
-import luca from "../../images/LucaCandelli.png"
-import WorkerCard from "../../shared/components/WorkerCard.tsx";
+import { useEffect } from "react";
 import ServerError from "../../shared/components/core/ServerError.tsx";
-import { get } from "../../../services/employees/employees.api.ts";
+import WorkerCard from "../../shared/components/WorkerCard.tsx";
+import Spinner from "../../shared/components/core/Spinner.tsx";
+import { EmployeeImg } from "../../../model/employeeImg.ts";
+import { useEmployeesService } from "../../../services/employees/useEmployeesService.ts";
 
 const Home = () => {
-  const [employees, setEmployees] = useState<Employee[]>([]);
-  const [error, setError] = useState(false);
+  const { state, actions } = useEmployeesService();
 
-  function getEmployees() {
-    setError(false);
-    get()
-      .then((res) => {
-        setError(false);
-        setEmployees(res.items);
-      })
-      .catch(() => {
-        setError(true);
-      });
+  function handleClick(employee: EmployeeImg) {
+    localStorage.setItem("selectedEmployee", JSON.stringify(employee));
+    // Effettua la chiamata GET per ottenere i progetti assegnati all'impiegato
   }
 
   useEffect(() => {
-    getEmployees();
-  }, [setEmployees]);
+    actions.getEmployees();
+  }, []);
+
+  useEffect(() => {
+    actions.getEmployeesWithIcon();
+  }, [state.employees]);
 
   return (
     <>
-      {error && <ServerError />}
       <h1 className="title text-center font-bold text-3xl">
         Selezionare Dipendente
       </h1>
+      {state.pending && <Spinner />}
+      {state.error && <ServerError />}
       <ul>
-        <div className="page flex flex-row flex-wrap xl:justify-start sm:justify-around my-28 gap-36">
-          {employees &&
-            employees.map((employee) => {
-              return (
-                <li key={employee.id}>
-                  <WorkerCard name={employee.complete_name} img={luca} />
-                </li>
-              );
-            })}
+        <div className="grid grid-cols-4 my-28 gap-36">
+          {state.employeesWithIcon.map((employee: EmployeeImg) => (
+            <li key={employee.id}>
+              <WorkerCard
+                name={employee.complete_name}
+                img={employee.icon}
+                id={employee.id}
+                handleClick={() => handleClick(employee)}
+              />
+            </li>
+          ))}
         </div>
       </ul>
-      <pre>{JSON.stringify(employees, null, 2)}</pre>
     </>
   );
 };
