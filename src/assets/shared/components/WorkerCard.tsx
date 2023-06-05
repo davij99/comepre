@@ -18,14 +18,14 @@ const WorkerCard = (props: WorkerCardProps) => {
   };
 
   return (
-    <Link to={`/project/${props.id}`} className="max-w-xs shadow-2xl">
-      <img className="rounded-t-xl" src={props.img} alt="" />
+    <Link
+      to={`/project/${props.id}`}
+      className="max-w-xs shadow-2xl"
+      onClick={handleClick}
+    >
+      <img className="rounded-t-xl" src={props.img} alt={props.name} />
 
-      <button
-        type="button"
-        className="btn primary w-full p-16 rounded-b-xl"
-        onClick={handleClick}
-      >
+      <button type="button" className="btn primary w-full p-16 rounded-b-xl">
         {props.name}
         <span className="ml-2">
           <i className="fa fa-arrow-circle-right"></i>
