@@ -8,6 +8,11 @@ import { useEmployeesService } from "../../../services/employees/useEmployeesSer
 const Home = () => {
   const { state, actions } = useEmployeesService();
 
+  function handleClick(employee: EmployeeImg) {
+    localStorage.setItem("selectedEmployee", JSON.stringify(employee));
+    // Effettua la chiamata GET per ottenere i progetti assegnati all'impiegato
+  }
+
   useEffect(() => {
     actions.getEmployees();
   }, []);
@@ -31,6 +36,7 @@ const Home = () => {
                 name={employee.complete_name}
                 img={employee.icon}
                 id={employee.id}
+                handleClick={() => handleClick(employee)}
               />
             </li>
           ))}
