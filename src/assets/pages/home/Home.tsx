@@ -4,17 +4,25 @@ import WorkerCard from "../../shared/components/WorkerCard.tsx";
 import Spinner from "../../shared/components/core/Spinner.tsx";
 import { EmployeeImg } from "../../../model/employeeImg.ts";
 import { useEmployeesService } from "../../../services/employees/useEmployeesService.ts";
+import { login } from "../../../services/auth/auth.api.ts";
 
 const Home = () => {
   const { state, actions } = useEmployeesService();
 
   function handleClick(employee: EmployeeImg) {
-    localStorage.setItem("selectedEmployee", JSON.stringify(employee));
+    localStorage.setItem(
+      "selectedEmployee",
+      JSON.stringify({
+        id: employee.id,
+      })
+    );
     // Effettua la chiamata GET per ottenere i progetti assegnati all'impiegato
   }
 
   useEffect(() => {
-    actions.getEmployees();
+    login().then(() => {
+      actions.getEmployees();
+    });
   }, []);
 
   useEffect(() => {
