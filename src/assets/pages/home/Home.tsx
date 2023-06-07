@@ -6,15 +6,14 @@ import { EmployeeImg } from "../../../model/employeeImg.ts";
 import { useEmployeesService } from "../../../services/employees/useEmployeesService.ts";
 import { login } from "../../../services/auth/auth.api.ts";
 
-
 const Home = () => {
   const { state, actions } = useEmployeesService();
-  
 
   function handleClick(employee: EmployeeImg) {
     localStorage.setItem(
       "selectedEmployee",
       JSON.stringify({
+        employee: employee,
         id: employee.id,
       })
     );
@@ -32,7 +31,6 @@ const Home = () => {
 
   return (
     <>
-    
       <h1 className="title text-center font-bold text-3xl">
         Selezionare Dipendente
       </h1>
