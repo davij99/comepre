@@ -8,6 +8,7 @@ export function useEmployeesService() {
 
   function getEmployees() {
     dispatch({ type: "FETCH_EMPLOYEES", payload: true });
+
     get()
       .then((res) => {
         dispatch({ type: "FETCH_EMPLOYEES_SUCCESS", payload: res.items });

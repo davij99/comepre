@@ -4,7 +4,7 @@
 
 html,
 body {
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*.title {*/
@@ -13,19 +13,19 @@ body {
 /*}*/
 
 .page {
-    @apply max-w-screen-xl mx-auto pt-16 px-3;
+  @apply max-w-screen-xl mx-auto pt-16 px-3;
 }
 
 .page-sm {
-    @apply max-w-sm mx-auto;
+  @apply max-w-sm mx-auto;
 }
 
 .btn {
-    @apply py-2 px-5 font-bold text-center text-sm disabled:opacity-30 transition;
+  @apply py-2 px-5 font-bold text-center text-sm disabled:opacity-30 transition;
 }
 
 .btn.primary {
-    @apply bg-[#172842] text-white;
+  @apply bg-[#172842] text-white;
 }
 
 .btn-project {
@@ -38,7 +38,7 @@ input[type="text"].error,
 input[type="password"].error,
 input[type="number"].error,
 input[type="email"].error {
-    @apply bg-red-300;
+  @apply bg-red-300;
 }
 
 /*FORMS*/
@@ -47,11 +47,9 @@ input[type="text"],
 input[type="password"],
 input[type="number"],
 input[type="email"] {
-    @apply text-black;
+  @apply text-black;
 }
 
 .btn-project {
-
-    @apply bg-white font-semibold border-solid border rounded-3xl py-5 px-7 border-[#172842] flex items-center text-[#172842]  shadow-2xl   flex items-center justify-between hover:text-white hover:bg-[#172842]
-
+  @apply bg-white font-semibold border-solid border rounded-3xl py-5 px-7 border-[#172842] flex items-center text-[#172842] shadow-2xl justify-between hover:text-white hover:bg-[#172842] transition-all;
 }

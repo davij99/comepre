@@ -5,7 +5,7 @@ export const login = async () => {
 };
 
 export const logout = async () => {
-  return pb.authStore.clear();
+  return localStorage.removeItem("selectedEmployee");
 };
 
 export const getToken = () => {
