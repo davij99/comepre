@@ -54,6 +54,10 @@ const Project = () => {
     navigate("/home");
   }
 
+  function handleClick(p: ProjectsByEmployees) {
+    localStorage.setItem("selectedProject", JSON.stringify(p));
+  }
+
   return (
     <div className="flex w-full">
       {/* ... */}
@@ -73,7 +77,11 @@ const Project = () => {
               projects.map((project) => {
                 return (
                   <li className="list-none" key={project.id}>
-                    <NavLink to={"/materials"} className="btn-project">
+                    <NavLink
+                      to={"/materials"}
+                      className="btn-project"
+                      onClick={() => handleClick(project)}
+                    >
                       {project.project_name}{" "}
                       <i className="fa fa-arrow-circle-right"></i>
                     </NavLink>
