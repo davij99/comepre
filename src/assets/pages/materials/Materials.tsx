@@ -1,8 +1,9 @@
+import Aside from "../../shared/components/core/Aside";
+
 const Materials = () => {
   return (
     <>
-      {" "}
-      <h1>materials</h1>
+      <Aside /> <h1>materials</h1>
     </>
   );
 };

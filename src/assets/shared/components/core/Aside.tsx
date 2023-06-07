@@ -1,6 +1,22 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Aside = () => {
+  const selectEmployee = JSON.parse(
+    localStorage.getItem("selectedEmployee") || "{}"
+  );
+  const selectProject = JSON.parse(
+    localStorage.getItem("selectedProject") || "{}"
+  );
+  const selectActivity = JSON.parse(
+    localStorage.getItem("selectedAction") || '""'
+  );
+
+  
+  const selectEmployeeImg = selectEmployee.employee.icon;
+  const selectEmployeeName = selectEmployee.employee.complete_name;
+  const selectProjectName = selectProject.project_name;
+
   return (
     <div className=" w-1/4 min-h-[70vh] border-r-[3px] px-8 border-solid   border-[#172842]">
       <NavLink
@@ -13,8 +29,8 @@ const Aside = () => {
         <div className="box-img w-36 pb-8">
           <img
             className="rounded-2xl shadow-2xl "
-            src="../../../../../public/image/LucaCandelli.png"
-            alt="foto luca candelli"
+            src={`/${selectEmployeeImg}`}
+            alt={selectEmployeeName}
           />
         </div>
         <div className="box-info-dipendente">
@@ -22,19 +38,21 @@ const Aside = () => {
             Dipendente selezionato:
           </span>
           <span className="block uppercase font-semibold text-[#464543]">
-            luca Candelli
+            {selectEmployeeName}
           </span>
         </div>
         <div className="box-info-progetto py-5">
           <span className="block font-medium text-[#464543]">
             Progetto selezionato:
           </span>
-          <span className="block font-semibold text-[#464543]">canto</span>
+          <span className="block font-semibold text-[#464543]">
+            {selectProjectName}
+          </span>
         </div>
         <div className="box-info-attivita">
           <span className="block font-medium text-[#464543]">Attività:</span>
           <span className="block font-semibold text-[#464543]">
-            Consuntivazione ore
+            {selectActivity}
           </span>
         </div>
       </div>
