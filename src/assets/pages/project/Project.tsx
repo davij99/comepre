@@ -52,7 +52,6 @@ const Project = () => {
   function goBack() {
     logout();
     navigate("/home");
-    localStorage.removeItem("selectedProject");
   }
 
   function handleClick(p: ProjectsByEmployees) {
