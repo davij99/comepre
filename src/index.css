@@ -28,6 +28,10 @@ body {
   @apply bg-[#172842] text-white;
 }
 
+.btn-project {
+  @apply bg-white font-semibold border-solid border rounded-3xl py-5 px-7 border-[#172842] flex items-center text-[#172842]  shadow-2xl   flex items-center justify-between hover:text-white hover:bg-[#172842]
+}
+
 /*FORMS ERROR*/
 textarea.error,
 input[type="text"].error,
