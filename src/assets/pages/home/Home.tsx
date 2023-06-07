@@ -18,7 +18,6 @@ const Home = () => {
         id: employee.id,
       })
     );
-    // Effettua la chiamata GET per ottenere i progetti assegnati all'impiegato
   }
 
   useEffect(() => {
@@ -41,16 +40,17 @@ const Home = () => {
       {state.error && <ServerError />}
       <ul>
         <div className="grid grid-cols-4 my-28 gap-36">
-          {state.employeesWithIcon.map((employee: EmployeeImg) => (
-            <li key={employee.id}>
-              <WorkerCard
-                name={employee.complete_name}
-                img={employee.icon}
-                id={employee.id}
-                handleClick={() => handleClick(employee)}
-              />
-            </li>
-          ))}
+          {state.employeesWithIcon &&
+            state.employeesWithIcon.map((employee: EmployeeImg) => (
+              <li key={employee.id}>
+                <WorkerCard
+                  name={employee.complete_name}
+                  img={employee.icon}
+                  id={employee.id}
+                  handleClick={() => handleClick(employee)}
+                />
+              </li>
+            ))}
         </div>
       </ul>
     </>

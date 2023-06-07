@@ -4,13 +4,21 @@ import Aside from "../../shared/components/core/Aside.tsx";
 import { get } from "../../../services/projects/projects.api.ts";
 import { logout } from "../../../services/auth/auth.api.ts";
 import { ProjectsByEmployees } from "../../../model/projectsByEmployees.ts";
+import ServerError from "../../shared/components/core/ServerError.tsx";
+import Spinner from "../../shared/components/core/Spinner.tsx";
 
 const Project = () => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState<ProjectsByEmployees[]>([]);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState(false);
 
   const getProjects = useCallback(() => {
+    setPending(true);
+    setError(false);
     try {
+      setPending(false);
+      setError(false);
       const selectedEmployee = JSON.parse(
         localStorage.getItem("selectedEmployee") || "{}"
       );
@@ -23,13 +31,16 @@ const Project = () => {
               filteredProjects.push(project);
             }
           });
-          console.log(filteredProjects); // Visualizza l'array filtrato correttamente
           setProjects(filteredProjects);
         });
       } else {
+        setPending(false);
+        setError(true);
         console.log("Employee ID not found in localStorage");
       }
     } catch (error) {
+      setPending(false);
+      setError(true);
       console.log("Error parsing JSON from localStorage:", error);
     }
   }, []);
@@ -52,10 +63,12 @@ const Project = () => {
           Selezionare commessa
         </h2>
         {/* ... */}
+        {pending && <Spinner />}
+        {error && <ServerError />}
         <ul>
           <div className="grid grid-cols-2 gap-8">
             {projects.length === 0 ? (
-              <p>Caricamento...</p>
+              <ServerError message="No Projects" />
             ) : (
               projects.map((project) => {
                 return (
@@ -71,7 +84,10 @@ const Project = () => {
           </div>
         </ul>
         <div className="my-28 w-full flex justify-end">
-          <button className="btn primary rounded-xl" onClick={() => goBack()}>
+          <button
+            className="px-24 py-6 bg-[#172842] text-white rounded-xl shadow-2xl"
+            onClick={() => goBack()}
+          >
             Indietro
           </button>
         </div>
