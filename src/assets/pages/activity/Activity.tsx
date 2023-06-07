@@ -15,7 +15,7 @@ const Activity = () => {
   }
 
   function handleClick(action: string) {
-    localStorage.setItem("selectedAction", action);
+    localStorage.setItem("selectedAction", JSON.stringify(action));
   }
 
   return (
