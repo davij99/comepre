@@ -55,7 +55,7 @@ const Project = () => {
   }
 
   return (
-    <div className="flex">
+    <div className="flex w-full">
       {/* ... */}
       <Aside />
       <div className=" w-3/4 px-12">

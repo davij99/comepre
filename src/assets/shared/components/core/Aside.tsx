@@ -1,27 +1,42 @@
+import { NavLink } from "react-router-dom";
+
 const Aside = () => {
   return (
-    <div className=" w-1/4">
-      <div className=" bg-lime-400">
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi,
-          officia sapiente libero delectus cumque temporibus. Tempore tenetur
-          perspiciatis est illum quae, odio officiis ut error repellat.
-          Consectetur recusandae dignissimos beatae! Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quasi iste, dolorem accusantium saepe,
-          officiis harum nesciunt praesentium unde id maiores aperiam quod magni
-          dolore nobis porro, necessitatibus doloremque quidem rerum? Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Rerum, corrupti
-          error fugiat quisquam asperiores sed beatae quae aliquam harum vero
-          repellendus incidunt quibusdam atque quos accusantium iure vitae eius
-          corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Commodi quidem, natus vel, nihil nesciunt saepe recusandae quas aut
-          itaque, totam ex magni! Ullam culpa, corrupti alias officiis debitis
-          doloribus repellendus. Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Pariatur, reprehenderit sapiente. Similique
-          voluptatem corrupti cumque fugit incidunt dolorum voluptates
-          blanditiis eos. Enim hic recusandae quos expedita veniam qui optio
-          consequatur.
-        </p>
+    <div className=" w-1/4 min-h-[70vh] border-r-[3px] px-8 border-solid   border-[#172842]">
+      <NavLink
+        to={"/home"}
+        className="flex items-center text-[#808080] hover:text-[#FF0000] "
+      >
+        <i className="fa fa-arrow-circle-left pr-2"></i>torna indietro
+      </NavLink>
+      <div className="box-info pt-12">
+        <div className="box-img w-36 pb-8">
+          <img
+            className="rounded-2xl shadow-2xl "
+            src="../../../../../public/image/LucaCandelli.png"
+            alt="foto luca candelli"
+          />
+        </div>
+        <div className="box-info-dipendente">
+          <span className="block font-medium text-[#464543]">
+            Dipendente selezionato:
+          </span>
+          <span className="block uppercase font-semibold text-[#464543]">
+            luca Candelli
+          </span>
+        </div>
+        <div className="box-info-progetto py-5">
+          <span className="block font-medium text-[#464543]">
+            Progetto selezionato:
+          </span>
+          <span className="block font-semibold text-[#464543]">canto</span>
+        </div>
+        <div className="box-info-attivita">
+          <span className="block font-medium text-[#464543]">Attività:</span>
+          <span className="block font-semibold text-[#464543]">
+            Consuntivazione ore
+          </span>
+        </div>
       </div>
     </div>
   );
