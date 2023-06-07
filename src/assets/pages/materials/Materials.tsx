@@ -1,9 +1,9 @@
 const Materials = () => {
   return (
-    <div>
-      <h1>Material page</h1>
-      content here...
-    </div>
+    <>
+      {" "}
+      <h1>materials</h1>
+    </>
   );
 };
 

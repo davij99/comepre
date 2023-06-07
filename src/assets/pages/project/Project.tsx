@@ -6,6 +6,7 @@ import { logout } from "../../../services/auth/auth.api.ts";
 import { ProjectsByEmployees } from "../../../model/projectsByEmployees.ts";
 import ServerError from "../../shared/components/core/ServerError.tsx";
 import Spinner from "../../shared/components/core/Spinner.tsx";
+import Button from "../../shared/components/core/Button.tsx";
 
 const Project = () => {
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ const Project = () => {
                 return (
                   <li className="list-none" key={project.id}>
                     <NavLink
-                      to={"/materials"}
+                      to={`/activity/${project.id}`}
                       className="btn-project"
                       onClick={() => handleClick(project)}
                     >
@@ -92,12 +93,7 @@ const Project = () => {
           </div>
         </ul>
         <div className="my-28 w-full flex justify-end">
-          <button
-            className="px-24 py-6 bg-[#172842] text-white rounded-xl shadow-2xl"
-            onClick={() => goBack()}
-          >
-            Indietro
-          </button>
+          <Button handleClick={() => goBack()} />
         </div>
       </div>
     </div>

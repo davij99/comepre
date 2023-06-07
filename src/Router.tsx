@@ -13,11 +13,11 @@ export const Router: React.FC = () => {
       element: <Home></Home>,
     },
     {
-      path: "/project/:id",
+      path: "/project/:employeeId",
       element: <Project></Project>,
     },
     {
-      path: "/activity",
+      path: "/activity/:projectId",
       element: <Activity></Activity>,
     },
     {
