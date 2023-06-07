@@ -5,8 +5,10 @@ import Spinner from "../../shared/components/core/Spinner.tsx";
 import { EmployeeImg } from "../../../model/employeeImg.ts";
 import { useEmployeesService } from "../../../services/employees/useEmployeesService.ts";
 
+
 const Home = () => {
   const { state, actions } = useEmployeesService();
+  
 
   function handleClick(employee: EmployeeImg) {
     localStorage.setItem("selectedEmployee", JSON.stringify(employee));
@@ -23,6 +25,7 @@ const Home = () => {
 
   return (
     <>
+    
       <h1 className="title text-center font-bold text-3xl">
         Selezionare Dipendente
       </h1>

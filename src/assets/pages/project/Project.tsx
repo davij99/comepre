@@ -22,34 +22,33 @@ const Project = () => {
     getProjects();
   }, []);
   return (
-    <ul>
-      <div className="flex">
+    <div className=" flex w-full">
+      <Aside/>
+      <div className=" w-3/4  px-12">
+        <h2 className="text-2xl font-medium text-center pb-8">
+          Selezionare commessa
+        </h2>
         {/* ... */}
-        <Aside />
-        <div className=" w-3/4 px-12">
-          <h2 className="text-2xl font-medium text-center py-7">
-            Selezionare commessa
-          </h2>
-          {/* ... */}
-          <div className="grid grid-cols-2 gap-8">
-            {projects.length === 0 ? (
-              <p>Caricamento...</p>
-            ) : (
-              projects.map((project) => {
-                return (
+        <div className="grid grid-cols-2 gap-8">
+          {projects.length === 0 ? (
+            <p>Caricamento...</p>
+          ) : (
+            projects.map((project) => {
+              return (
+                <ul>
                   <li className="list-none" key={project.id}>
                     <NavLink to={"/materials"} className="btn-project">
                       {project.project_name}{" "}
                       <i className="fa fa-arrow-circle-right"></i>
                     </NavLink>
                   </li>
-                );
-              })
-            )}
-          </div>
+                </ul>
+              );
+            })
+          )}
         </div>
       </div>
-    </ul>
+    </div>
   );
 };
 
