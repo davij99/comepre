@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Aside = () => {
-  const [icon, setIcon] = useState("");
   const selectEmployee = JSON.parse(
     localStorage.getItem("selectedEmployee") || "{}"
   );
-  console.log(selectEmployee);
+  const selectProject = JSON.parse(
+    localStorage.getItem("selectedProject") || "{}"
+  );
+  const selectActivity = JSON.parse(
+    localStorage.getItem("selectedAction") || '""'
+  );
+
+  
   const selectEmployeeImg = selectEmployee.employee.icon;
   const selectEmployeeName = selectEmployee.employee.complete_name;
-
-  console.log(selectEmployeeImg);
+  const selectProjectName = selectProject.project_name;
 
   return (
     <div className=" w-1/4 min-h-[70vh] border-r-[3px] px-8 border-solid   border-[#172842]">
@@ -40,15 +45,16 @@ const Aside = () => {
           <span className="block font-medium text-[#464543]">
             Progetto selezionato:
           </span>
-          <span className="block font-semibold text-[#464543]">canto</span>
+          <span className="block font-semibold text-[#464543]">
+            {selectProjectName}
+          </span>
         </div>
         <div className="box-info-attivita">
           <span className="block font-medium text-[#464543]">Attività:</span>
           <span className="block font-semibold text-[#464543]">
-            Consuntivazione ore
+            {selectActivity}
           </span>
         </div>
-        <pre>{JSON.stringify(selectEmployee, null, 2)}</pre>
       </div>
     </div>
   );
