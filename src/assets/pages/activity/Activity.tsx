@@ -21,7 +21,7 @@ const Activity = () => {
   return (
     <div className="flex w-full">
       <Aside />
-      <div className=" w-3/4 px-12">
+      <div className=" w-full">
         <h2 className="text-2xl font-medium text-center py-7">
           Selezionare attività:
         </h2>
@@ -43,7 +43,7 @@ const Activity = () => {
             <i className="fa fa-arrow-circle-right"></i>
           </NavLink>
         </div>
-        <div className="my-28 w-full flex justify-end">
+        <div className="my-28 flex justify-end">
           <Button handleClick={() => goBack()} />
         </div>
       </div>

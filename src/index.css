@@ -29,7 +29,7 @@ body {
 }
 
 .btn-project {
-  @apply bg-white font-semibold border-solid border rounded-3xl py-5 px-7 border-[#172842] flex items-center text-[#172842]  shadow-2xl   flex items-center justify-between hover:text-white hover:bg-[#172842]
+  @apply bg-white font-semibold border-solid border rounded-3xl py-5 px-7 border-[#172842] flex items-center text-[#172842]  shadow-2xl   flex items-center justify-between hover:text-white hover:bg-[#172842];
 }
 
 /*FORMS ERROR*/
@@ -39,6 +39,12 @@ input[type="password"].error,
 input[type="number"].error,
 input[type="email"].error {
   @apply bg-red-300;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /*FORMS*/
