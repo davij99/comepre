@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Aside = () => {
+  const clear = () => {
+    localStorage.clear();
+  };
   const selectEmployee = JSON.parse(
     localStorage.getItem("selectedEmployee") || "{}"
   );
@@ -12,7 +14,6 @@ const Aside = () => {
     localStorage.getItem("selectedAction") || '""'
   );
 
-  
   const selectEmployeeImg = selectEmployee.employee.icon;
   const selectEmployeeName = selectEmployee.employee.complete_name;
   const selectProjectName = selectProject.project_name;
@@ -21,6 +22,7 @@ const Aside = () => {
     <div className=" w-1/4 min-h-[70vh] border-r-[3px] px-8 border-solid   border-[#172842]">
       <NavLink
         to={"/home"}
+        onClick={clear}
         className="flex items-center text-[#808080] hover:text-[#FF0000] "
       >
         <i className="fa fa-arrow-circle-left pr-2"></i>torna indietro
@@ -61,3 +63,6 @@ const Aside = () => {
 };
 
 export default Aside;
+function clearAll(arg0: () => void) {
+  throw new Error("Function not implemented.");
+}
