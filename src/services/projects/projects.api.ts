@@ -6,6 +6,6 @@ export function get() {
   return pb.collection("projects_employees").getList<ProjectsByEmployees[]>();
 }
 
-export function update(h: number, id: string) {
-  return pb.collection("projects").update(id, h);
+export function update(id: string, hours: number) {
+  return pb.collection("projects").update(id, { hours });
 }
