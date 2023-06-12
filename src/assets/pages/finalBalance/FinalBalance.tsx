@@ -24,10 +24,9 @@ const FinalBalance = () => {
       localStorage.getItem("selectedProject") || "{}"
     );
     const projectId = selectedProject.id;
-    update(numericValue, projectId).then((res) => {
+    update(projectId, numericValue).then((res) => {
       console.log(res);
     });
-    console.log("Valore delle ore di lavoro:", numericValue);
   };
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
