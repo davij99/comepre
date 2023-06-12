@@ -5,6 +5,7 @@ import FinalBalance from "./assets/pages/finalBalance/FinalBalance.tsx";
 import Materials from "./assets/pages/materials/Materials.tsx";
 import { Navigate, useRoutes } from "react-router-dom";
 import React from "react";
+import CustomMaterials from "./assets/pages/materials/CustomMaterials.tsx";
 
 export const Router: React.FC = () => {
   return useRoutes([
@@ -27,6 +28,10 @@ export const Router: React.FC = () => {
     {
       path: "/materials",
       element: <Materials></Materials>,
+    },
+    {
+      path:"/custommaterials",
+      element: <CustomMaterials/>
     },
     {
       path: "*",
