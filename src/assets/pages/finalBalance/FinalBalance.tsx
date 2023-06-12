@@ -58,13 +58,13 @@ const FinalBalance = () => {
               />
             </div>
             <div className=" w-full flex justify-between items-end">
+              <Button handleClick={() => goBack()} />
               <button
                 className="bg-red-500 px-24 py-6 text-white rounded-xl shadow-2xl "
                 type="submit"
               >
                 Consuntiva
               </button>
-              <Button handleClick={() => goBack()} />
             </div>
           </form>
         </div>
