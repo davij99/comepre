@@ -21,9 +21,9 @@ const CustomMaterials = () => {
       getMaterial(value)
         .then((res) => {
           const nameMaterial = res.material_name;
-          const categorieMaterial = res.categories;
+          const categoryMaterial = res.categories;
           const um = res.um;
-          const description = `${nameMaterial}\n${categorieMaterial}\n${um}`;
+          const description = `${nameMaterial}\n${categoryMaterial}\n${um}`;
           console.log(res);
           setProductDescription(description); // Imposta la descrizione del prodotto
         })
