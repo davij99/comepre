@@ -7,7 +7,7 @@ export function get() {
 }
 
 export function update(id: string, material_used_qty: number) {
-  return pb.collection("projects").update(id, { material_used_qty });
+  return pb.collection("projects_materials").update(id, { material_used_qty });
 }
 
 export function getMaterial(id:string)  {
