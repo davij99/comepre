@@ -96,6 +96,9 @@ const Materials = () => {
 
           setMaterials(filteredMaterials);
           console.log(filteredMaterials);
+          if(filteredMaterials.length === 0) {
+            navigate("/custommaterials")
+          }
         });
       }
     } catch (e) {
@@ -106,6 +109,7 @@ const Materials = () => {
   }, [materials, setMaterials]);
 
   useEffect(() => {
+
     getMaterials();
   }, []);
 
