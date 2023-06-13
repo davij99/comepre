@@ -20,6 +20,7 @@ const Home = () => {
   }
 
   useEffect(() => {
+    localStorage.clear();
     login().then(() => {
       actions.getEmployees();
     });
