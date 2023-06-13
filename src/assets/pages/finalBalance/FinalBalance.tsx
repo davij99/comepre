@@ -25,6 +25,8 @@ const FinalBalance = () => {
     );
     const projectId = selectedProject.id;
     update(projectId, numericValue).then((res) => {
+      localStorage.clear();
+      navigate("/home");
       console.log(res);
     });
   };
