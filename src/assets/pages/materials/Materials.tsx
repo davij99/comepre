@@ -76,7 +76,6 @@ const Materials = () => {
 
     try {
       setPending(false);
-
       setError(false);
 
       const selectedProject = JSON.parse(
@@ -101,9 +100,7 @@ const Materials = () => {
       }
     } catch (e) {
       console.log(e);
-
       setPending(false);
-
       setError(true);
     }
   }, [materials, setMaterials]);
