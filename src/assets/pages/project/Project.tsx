@@ -42,6 +42,7 @@ const Project = () => {
       console.log("Error parsing JSON from localStorage:", error);
     } finally {
       setPending(false);
+      setError(false);
     }
   }, []);
 
