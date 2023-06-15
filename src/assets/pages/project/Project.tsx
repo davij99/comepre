@@ -1,12 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import Aside from "../../shared/components/core/Aside.tsx";
-import { get } from "../../../services/projects/projects.api.ts";
-import { logout } from "../../../services/auth/auth.api.ts";
-import { ProjectsByEmployees } from "../../../model/projectsByEmployees.ts";
-import ServerError from "../../shared/components/core/ServerError.tsx";
-import Spinner from "../../shared/components/core/Spinner.tsx";
-import Button from "../../shared/components/core/Button.tsx";
+import Aside from "../../shared/components/core/Aside";
+import { get } from "../../../services/projects/projects.api";
+import { logout } from "../../../services/auth/auth.api";
+import { ProjectsByEmployees } from "../../../model/projectsByEmployees";
+import ServerError from "../../shared/components/core/ServerError";
+import Spinner from "../../shared/components/core/Spinner";
+import Button from "../../shared/components/core/Button";
 
 const Project = () => {
   const navigate = useNavigate();
@@ -14,35 +14,34 @@ const Project = () => {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(false);
 
-  const getProjects = useCallback(() => {
+  const getProjects = useCallback(async () => {
     setPending(true);
     setError(false);
+
     try {
-      setPending(false);
-      setError(false);
       const selectedEmployee = JSON.parse(
         localStorage.getItem("selectedEmployee") || "{}"
       );
+
       const employeeId = selectedEmployee.id;
+
       if (employeeId) {
-        get().then((response) => {
-          const filteredProjects: ProjectsByEmployees[] = [];
-          response.items.forEach((project) => {
-            if (project.employee_id === employeeId) {
-              filteredProjects.push(project);
-            }
-          });
-          setProjects(filteredProjects);
-        });
+        const response = await get();
+
+        const filteredProjects: any = response.items.filter(
+          (project: any) => project.employee_id === employeeId
+        );
+
+        setProjects(filteredProjects);
       } else {
-        setPending(false);
         setError(true);
         console.log("Employee ID not found in localStorage");
       }
     } catch (error) {
-      setPending(false);
       setError(true);
       console.log("Error parsing JSON from localStorage:", error);
+    } finally {
+      setPending(false);
     }
   }, []);
 
@@ -50,20 +49,20 @@ const Project = () => {
     getProjects();
   }, []);
 
-  function goBack() {
+  const goBack = () => {
     logout();
     navigate("/home");
-  }
+  };
 
-  function handleClick(p: ProjectsByEmployees) {
+  const handleClick = (p: ProjectsByEmployees) => {
     localStorage.setItem("selectedProject", JSON.stringify(p));
-  }
+  };
 
   return (
     <div className="flex w-full">
       {/* ... */}
       <Aside />
-      <div className=" w-3/4 px-12">
+      <div className="w-3/4 px-12">
         <h2 className="text-2xl font-medium text-center py-7">
           Selezionare commessa
         </h2>
@@ -75,25 +74,23 @@ const Project = () => {
             {projects.length === 0 ? (
               <ServerError message="No Projects" />
             ) : (
-              projects.map((project) => {
-                return (
-                  <li className="list-none" key={project.id}>
-                    <NavLink
-                      to={`/activity/${project.id}`}
-                      className="btn-project"
-                      onClick={() => handleClick(project)}
-                    >
-                      {project.project_name}{" "}
-                      <i className="fa fa-arrow-circle-right"></i>
-                    </NavLink>
-                  </li>
-                );
-              })
+              projects.map((project) => (
+                <li className="list-none" key={project.id}>
+                  <NavLink
+                    to={`/activity/${project.id}`}
+                    className="btn-project"
+                    onClick={() => handleClick(project)}
+                  >
+                    {project.project_name}{" "}
+                    <i className="fa fa-arrow-circle-right"></i>
+                  </NavLink>
+                </li>
+              ))
             )}
           </div>
         </ul>
         <div className="my-28 w-full flex justify-end">
-          <Button handleClick={() => goBack()} />
+          <Button handleClick={goBack} />
         </div>
       </div>
     </div>
