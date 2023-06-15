@@ -7,4 +7,5 @@ export interface ProjectsByEmployees {
   project_name: string;
   created: string;
   updated: string;
+  expand: Record<string, any>;
 }

@@ -38,10 +38,10 @@ const CustomMaterials = () => {
     e.preventDefault();
     console.log("ID inserito:", productId);
     console.log("Qty:", qty);
-    const selectedProject = JSON.parse(
-      localStorage.getItem("selectedProject") || "{}"
-    );
-    const projectId = selectedProject.id;
+    // const selectedProject = JSON.parse(
+    //   localStorage.getItem("selectedProject") || "{}"
+    // );
+    // const projectId = selectedProject.id;
     setProductId("");
     setProductDescription("");
     setQty("");
