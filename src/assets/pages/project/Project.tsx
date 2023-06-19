@@ -48,7 +48,7 @@ const Project = () => {
 
   useEffect(() => {
     getProjects();
-  }, []);
+  }, [getProjects]);
 
   const goBack = () => {
     logout();
